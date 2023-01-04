@@ -7,5 +7,31 @@
 </head>
     <body>
     <!--Add a registration form here -->
+        <form class="form-inline" action="{% url 'djangoapp:registration' %}" method="post">
+            <div class="container">
+                <h1>Sign Up</h1>
+                <hr>
+                <b>Username</b>
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Enter Username:" name="username" >
+                </div>
+                <b>First Name</b>
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Enter First Name:" name="firstname" >
+                </div>
+                <b>Last Name</b>
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Enter Last Name:" name="lastname" >
+                </div>
+                <b>Password</b>
+                <div class="input-group">
+                    <input type="password" class="form-control" placeholder="Enter Password:" name="psw" >
+                </div>
+                <div>
+                    {% csrf_token %}
+                    <button class="btn btn-primary" type="submit" href="{% url 'djangoapp:registration' %}">Sign Up</button>
+                </div>
+            </div>
+        </form>
     </body>
 </html>
