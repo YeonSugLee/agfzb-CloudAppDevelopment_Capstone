@@ -41,12 +41,23 @@
     </nav>   
 
     <!-- Add reviews as cards -->
+    <h2>
+        Reviews for {{dealership}}
+    </h2>
+    <hr>
+
     <div class="card-columns">
         {% for review in review_list %}
         <div class="card">
-            {% if  review.sentiment == positive%}
-            <img class="card-img-left" src="{{MEDIA_URL}}/emoji/positive.png">
-            {% endif %}
+            <div class="card-img-left">
+                {% if  review.sentiment == "positive" %}
+                <img class="card-img-left" src="{{MEDIA_URL}}/emoji/positive.png">
+                {% elif  review.sentiment == "neutral" %}
+                <img src="{{MEDIA_URL}}/emoji/neutral.png">
+                {% elif  review.sentiment == "negative" %}
+                <img src="{{MEDIA_URL}}/emoji/negative.png">
+                {% endif %}
+            </div>
             <div class="card-body">
                 <div class="card-title">
                     {{review.car_make}},
