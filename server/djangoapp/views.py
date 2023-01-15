@@ -130,7 +130,7 @@ def get_dealer_details(request, dealer_id):
 # Create a `add_review` view to submit a review
 # def add_review(request, dealer_id):
 # ...
-def add_review(request, dealer_id):
+def add_review(request):
     if request.user.username is None:
         context ={}
         return render(request, 'djangoapp/index.html', context)
@@ -139,16 +139,17 @@ def add_review(request, dealer_id):
         
         review = dict()
         review["time"] = datetime.utcnow().isoformat()
-        review["name"] = "Name Here"
-        review["dealership"] = dealer_id
-        review["review"] = "This is great!"
-        review["purchase"] = "Purchase Here"
-        review["car_model"] = 'Car'
+        review["name"] = "John Doe"
+        review["dealership"] = 15
+        review["review"] = "Terrible service!"
+        review["purchase"] = True
+        review["car_make"] = 'Subaru'
+        review["car_model"] = 'Forester'
         review["car_year"] = 1992
         review["purchase_date"] = '02/16/2021'
 
         json_payload = dict()
         json_payload["review"] = review
 
-        result = post_request(url, json_payload, id=dealer_id)
+        result = post_request(url, json_payload, id=15)
         return HttpResponse(result)
