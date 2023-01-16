@@ -121,6 +121,7 @@ def get_dealer_details(request, dealer_id):
         # Get dealers from the URL
         reviews = get_dealer_reviews_from_cf(url , id=dealer_id)
         context["review_list"] = reviews
+        context["dealer_id"] = dealer_id
         # Concat all dealer's short name
         #reviews = ' '.join([review.review + review.sentiment for review in reviews])
         # Return a list of dealer short name
